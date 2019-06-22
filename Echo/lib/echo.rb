@@ -1,9 +1,26 @@
 require 'Date'
+
 class Echo
 
-  def echo(phrase)
-    puts "Please enter a word"
-    phrase = gets.chomp!
-    return Date.today.strftime("%d/%m/%Y") + ' | ' + Time.now.strftime('%H:%M') + ' | ' + 'You said: ' + phrase
+  attr_reader :phrase
+
+
+  def start
+    until @phrase == 'exit'
+      echo
+    end
+    "Goodbye"
   end
+
+  private
+
+  def echo
+    puts "Say something"
+    @phrase = gets.chomp!
+    puts Date.today.strftime("%d/%m/%Y") + ' | ' + Time.now.strftime('%H:%M') + ' | ' + 'You said: ' + @phrase
+  end
+
+
+
+
 end
