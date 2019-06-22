@@ -2,6 +2,11 @@ require 'echo'
 
 describe Echo do
 
+  before do
+    allow($stdout).to receive(:write)
+    allow(subject).to receive(:gets).and_return("Hello\n")
+  end
+
 
   describe '#echo' do
     it 'repeats the word back to you' do
